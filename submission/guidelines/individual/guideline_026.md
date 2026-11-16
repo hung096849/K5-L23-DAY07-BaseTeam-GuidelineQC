@@ -124,22 +124,3 @@ Trước khi khóa v1.0, nhóm nên thử mù trên cùng hai vùng: mỗi ngư�
 | Ảnh | Vị trí (mô tả hoặc toạ độ) | Lý do không gán / nghi ngờ | Người ghi | Kết quả reviewer |
 |---|---|---|---|---|
 | | | | | |
-
-### Câu hỏi mở cần nhóm chốt trước v1.0
-
-1. **Xe ngoài taxonomy (tuk-tuk, xe buýt, xe đạp):** không gán box nghĩa là mô hình sẽ coi chúng là nền. Chấp nhận, hay đề xuất thêm lớp ở bản sau?
-2. **Vật mờ không đủ căn cứ (R-07):** hiện chỉ ghi chú, không box, không `ignore_region`, nên vùng đó vẫn bị coi là nền. Có nên mở thêm cho `ignore_region` dùng với vật "chắc là thật nhưng không phân lớp được"?
-3. **Người trong cabin kín (R-08):** bỏ qua để giảm bất đồng, hay gán khi thấy rõ?
-4. **Ngưỡng 20 px theo chiều cao (R-05):** ô tô nhìn ngang rộng nhưng thấp có thể dưới 20 px cao mà vẫn rõ. Giữ nguyên, hay dùng cạnh dài hơn cho các lớp xe?
-5. **Ranh giới `car`/`van`/minibus** (MPV, xe khách nhỏ): các dấu hiệu gợi ý ở R-01 có đủ để hai người gán giống nhau không? Cần thử mù.
-6. **Xe thật trưng bày** (ví dụ `img_027`): gán hay không?
-7. **`ignore_region` khi xuất COCO:** cần xác nhận cách xuất (danh mục riêng hay cờ `iscrowd`) để người dùng dữ liệu không nhầm.
-
-### Lịch sử thay đổi
-
-| Phiên bản | Thay đổi | Lý do (ca nào) |
-|---|---|---|
-| Bản nháp | Đề xuất cách phân lớp, vẽ box, gán thuộc tính và xử lý ca biên để nhóm thử. | Khởi tạo. |
-| Bản nháp r1 | Rà soát lần 1: thêm nguyên tắc nhất quán (Mục 1); làm rõ định nghĩa `person`, `car` (MPV), `truck`, `van`; sửa ngưỡng `occluded_level` (mức 0 chấp nhận che dưới ~5%, sát ranh giới chọn mức cao hơn); thêm dung sai box ~2 px/cạnh (R-03); làm rõ box vật bị che, bị cắt, hàng hóa, thùng xe; thêm quy tắc đồ đeo/ô cho người (R-03); làm rõ xe chở và xe được chở (R-04); đo theo pixel ảnh gốc và tick `can_review` khi sát ngưỡng (R-05); xe thật nhìn qua kính thì gán nếu nhận diện được, thật/giả theo bản chất vật thể (R-06); đổi "mô hình" thành "xe/người mô hình" và thêm quy tắc phân vân với lớp ngoài taxonomy (R-07); thêm R-08 người trong cabin kín; thêm ca chung chưa gắn ảnh (Mục 4); định nghĩa "ảnh lỗi", checklist và mẫu ghi chú cấp ảnh (Mục 5); thêm danh sách câu hỏi mở. | Các ca ở Mục 4 và câu hỏi mở ở Mục 5. Chưa phải v1.0. |
-| v1.0 | Điền sau khi nhóm thống nhất và đối chiếu taxonomy. | |
-| v1.1 | Điền sau calibration với các ID ca và phạm vi thay đổi thật. | |
